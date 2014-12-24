@@ -1,0 +1,37 @@
+{
+  "name": "jquery-strength",
+  "title": "jQuery plugin",
+  "description": "a jquery plugin",
+  "version": "0.1.0",
+  "homepage": "https://github.com/amazingSurge/jquery-strength",
+  "author": {
+    "name": "amazingSurge",
+    "email": "amazingSurge@yahoo.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amazingSurge/jquery-strength.git"
+  },
+  "bugs": "https://github.com/amazingSurge/jquery-strength/issues",
+  "licenses": [
+    {
+      "type": "GPL",
+      "url": "https://github.com/amazingSurge/jquery-strength/blob/master/LICENSE-GPL"
+    }
+  ],
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-autoprefixer": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-less": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-csscomb": "*",
+    "grunt-jsbeautifier": "*",
+    "grunt-text-replace": "*",
+    "load-grunt-tasks": "*"
+  }
+}
