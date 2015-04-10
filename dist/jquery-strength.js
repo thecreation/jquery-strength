@@ -1,6 +1,6 @@
-/*! jQuery plugin - v0.1.0 - 2014-12-24
+/*! jQuery plugin - v0.1.1 - 2015-04-10
 * https://github.com/amazingSurge/jquery-strength
-* Copyright (c) 2014 amazingSurge; Licensed GPL */
+* Copyright (c) 2015 amazingSurge; Licensed GPL */
 var PasswordStrength = (function(){
   var MULTIPLE_NUMBERS_RE = /\d.*?\d.*?\d/;
   var MULTIPLE_SYMBOLS_RE = /[!@#$%^&*?_~].*?[!@#$%^&*?_~]/;
@@ -319,6 +319,7 @@ var PasswordStrength = (function(){
         },
 
         scoreLables: {
+            empty: 'Empty',
             invalid: 'Invalid',
             weak: 'Weak',
             good: 'Good',
@@ -326,11 +327,14 @@ var PasswordStrength = (function(){
         },
 
         scoreClasses: {
+            empty: '',
             invalid: 'label-danger',
             weak: 'label-warning',
             good: 'label-info',
             strong: 'label-success'
         },
+
+        emptyStatus: false,
 
         scoreCallback: null,
         statusCallback: null
@@ -455,6 +459,10 @@ var PasswordStrength = (function(){
 
                 score = check.test();
                 status = check.status;
+            }
+
+            if (this.options.emptyStatus & status !== 'invalid' && this.$input.val() === '') {
+                status = 'empty';
             }
 
             this.trigger('check', score, status);

@@ -2,7 +2,7 @@
   "name": "jquery-strength",
   "title": "jQuery plugin",
   "description": "a jquery plugin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/amazingSurge/jquery-strength",
   "author": {
     "name": "amazingSurge",
@@ -24,7 +24,7 @@
     "grunt-autoprefixer": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-concat": "*",
-    "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-copy": "*",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-less": "*",
     "grunt-contrib-uglify": "*",

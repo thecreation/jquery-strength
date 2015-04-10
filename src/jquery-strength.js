@@ -52,6 +52,7 @@
         },
 
         scoreLables: {
+            empty: 'Empty',
             invalid: 'Invalid',
             weak: 'Weak',
             good: 'Good',
@@ -59,11 +60,14 @@
         },
 
         scoreClasses: {
+            empty: '',
             invalid: 'label-danger',
             weak: 'label-warning',
             good: 'label-info',
             strong: 'label-success'
         },
+
+        emptyStatus: false,
 
         scoreCallback: null,
         statusCallback: null
@@ -188,6 +192,10 @@
 
                 score = check.test();
                 status = check.status;
+            }
+
+            if (this.options.emptyStatus & status !== 'invalid' && this.$input.val() === '') {
+                status = 'empty';
             }
 
             this.trigger('check', score, status);
