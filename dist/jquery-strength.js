@@ -334,7 +334,7 @@ var PasswordStrength = (function(){
             strong: 'label-success'
         },
 
-        emptyStatus: false,
+        emptyStatus: true,
 
         scoreCallback: null,
         statusCallback: null
