@@ -15,7 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": ">=1.8.3",
+    "jquery": ">=1.11.0",
     "password_strength": "git@github.com:fnando/password_strength.git#~1.0.2"
   }
 }
