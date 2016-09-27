@@ -1,0 +1,33 @@
+<!doctype html>
+<html class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>jquery-strength</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="../dist/css/strength.css">
+</head>
+<body>
+  <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+	<div class="container">
+		<form>
+			<div class="form-group">
+				<input type="password" class="password-input form-control" name="password" value="" />
+			</div>
+		</form>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/password_strength.js"></script>
+	<script src="../dist/jquery-strength.js"></script>
+	<script>
+		jQuery(function($) {
+			$(".password-input").strength();
+		});
+	</script>
+</body>
+</html>

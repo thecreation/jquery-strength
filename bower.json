@@ -1,21 +1,34 @@
 {
   "name": "jquery-strength",
-  "version": "0.1.1",
+  "version": "0.2.0",
+  "description": "A jquery plugin that do amazing things.",
   "main": "dist/jquery-strength.js",
   "copyright": "amazingSurge",
-  "license": "GPL",
+  "license": "LGPL-3.0",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
-    "libs",
+    "demo",
+    "gulp",
+    "CONTRIBUTING.md",
+    "manifest.json",
+    "karma.conf.js",
+    "config.js",
     "package.json",
-    "Gruntfile.js",
+    "gulpfile.babel.js",
     "tests"
   ],
+  "homepage": "https://github.com/amazingSurge/jquery-strength",
+  "authors": [
+    "amazingSurge <amazingSurge@gmail.com>"
+  ],
+  "moduleType": [
+    "globals"
+  ],
   "dependencies": {
-    "jquery": ">=1.11.0",
-    "password_strength": "git@github.com:fnando/password_strength.git#~1.0.2"
+    "jquery": ">=2.2.0",
+    "password_strength": "git@github.com:fnando/password_strength.git"
   }
 }

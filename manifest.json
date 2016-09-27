@@ -1,0 +1,8 @@
+{
+  "dest": "examples",
+  "packages": {
+    "npm:jquery": true,
+    "npm:normalize.css": true,
+    "npm:@fnando/password_strength": true
+  }
+}
