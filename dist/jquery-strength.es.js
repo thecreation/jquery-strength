@@ -1,5 +1,5 @@
 /**
-* jQuery strength v0.2.1
+* jQuery strength v0.2.2
 * https://github.com/amazingSurge/jquery-strength
 *
 * Copyright (c) amazingSurge
@@ -62,7 +62,7 @@ const NAMESPACE$1 = 'strength';
  * Plugin constructor
  **/
 class Strength {
-  constructor(element, options) {
+  constructor(element, options = {}) {
     this.element = element;
     this.$element = $(element);
 
@@ -266,12 +266,12 @@ class Strength {
   }
 
   static setDefaults(options) {
-    $.extend(DEFAULTS, $.isPlainObject(options) && options);
+    $.extend(true, DEFAULTS, $.isPlainObject(options) && options);
   }
 }
 
 var info = {
-  version:'0.2.1'
+  version:'0.2.2'
 };
 
 const NAMESPACE = 'strength';

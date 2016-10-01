@@ -8,7 +8,7 @@ const NAMESPACE = 'strength';
  * Plugin constructor
  **/
 class Strength {
-  constructor(element, options) {
+  constructor(element, options = {}) {
     this.element = element;
     this.$element = $(element);
 
@@ -212,7 +212,7 @@ class Strength {
   }
 
   static setDefaults(options) {
-    $.extend(DEFAULTS, $.isPlainObject(options) && options);
+    $.extend(true, DEFAULTS, $.isPlainObject(options) && options);
   }
 }
 

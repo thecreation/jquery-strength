@@ -1,5 +1,5 @@
 /**
-* jQuery strength v0.2.1
+* jQuery strength v0.2.2
 * https://github.com/amazingSurge/jquery-strength
 *
 * Copyright (c) amazingSurge
@@ -128,7 +128,9 @@
      **/
 
     var Strength = function() {
-      function Strength(element, options) {
+      function Strength(element) {
+        var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+
         _classCallCheck(this, Strength);
 
         this.element = element;
@@ -382,7 +384,7 @@
       }], [{
         key: 'setDefaults',
         value: function setDefaults(options) {
-          _jquery2.default.extend(DEFAULTS, _jquery2.default.isPlainObject(options) && options);
+          _jquery2.default.extend(true, DEFAULTS, _jquery2.default.isPlainObject(options) && options);
         }
       }]);
 
@@ -390,7 +392,7 @@
     }();
 
     var info = {
-      version: '0.2.1'
+      version: '0.2.2'
     };
 
     var NAMESPACE = 'strength';
