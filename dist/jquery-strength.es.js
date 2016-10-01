@@ -1,5 +1,5 @@
 /**
-* jQuery strength v0.2.0
+* jQuery strength v0.2.1
 * https://github.com/amazingSurge/jquery-strength
 *
 * Copyright (c) amazingSurge
@@ -234,14 +234,14 @@ class Strength {
       type = this.shown === false?"text" : "password";
     }
 
-    this.$input.attr('type', type);
-
     this.shown = type === "text"?true: false;
+
     if(this.shown) {
-      this.$element.addClass(this.classes.shown);
+      this.$container.addClass(this.classes.shown);
     } else {
-      this.$element.removeClass(this.classes.shown);
+      this.$container.removeClass(this.classes.shown);
     }
+    this.$input.attr('type', type);
 
     this.trigger('toggle', type);
   }
@@ -271,7 +271,7 @@ class Strength {
 }
 
 var info = {
-  version:'0.2.0'
+  version:'0.2.1'
 };
 
 const NAMESPACE = 'strength';
