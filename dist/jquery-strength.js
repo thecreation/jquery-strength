@@ -95,7 +95,8 @@
         input: 'strength-input',
         toggle: 'strength-toggle',
         meter: 'strength-meter',
-        score: 'strength-score'
+        score: 'strength-score',
+        shown: 'strength-shown'
       },
 
       scoreLables: {
@@ -133,14 +134,15 @@
         this.element = element;
         this.$element = (0, _jquery2.default)(element);
 
-        this.options = _jquery2.default.extend({}, DEFAULTS, options, this.$element.data());
-
+        this.options = _jquery2.default.extend(true, {}, DEFAULTS, options, this.$element.data());
         this.classes = this.options.classes;
 
         this.$username = (0, _jquery2.default)(this.options.usernameField);
 
         this.score = 0;
         this.status = null;
+
+        this.shown = false;
 
         this.trigger('init');
         this.init();
@@ -169,12 +171,21 @@
         value: function bindEvents() {
           var _this = this;
 
-          this.$toggle.on('change',
+          if (this.$toggle.is(':checkbox')) {
+            this.$toggle.on('change',
 
-            function() {
-              _this.toggle();
-            }
-          );
+              function() {
+                _this.toggle();
+              }
+            );
+          } else {
+            this.$toggle.on('click',
+
+              function() {
+                _this.toggle();
+              }
+            );
+          }
 
           this.$input.bind('keyup.strength keydown.strength',
 
@@ -318,9 +329,23 @@
       }, {
         key: 'toggle',
         value: function toggle() {
-          var type = this.$toggle.is(":checked") ? "text" : "password";
+          var type = void 0;
+
+          if (this.$toggle.is(':checkbox')) {
+            type = this.$toggle.is(":checked") ? "text" : "password";
+          } else {
+            type = this.shown === false ? "text" : "password";
+          }
 
           this.$input.attr('type', type);
+
+          this.shown = type === "text" ? true : false;
+
+          if (this.shown) {
+            this.$element.addClass(this.classes.shown);
+          } else {
+            this.$element.removeClass(this.classes.shown);
+          }
 
           this.trigger('toggle', type);
         }

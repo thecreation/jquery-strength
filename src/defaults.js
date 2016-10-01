@@ -20,7 +20,8 @@ export default {
     input: 'strength-input',
     toggle: 'strength-toggle',
     meter: 'strength-meter',
-    score: 'strength-score'
+    score: 'strength-score',
+    shown: 'strength-shown'
   },
 
   scoreLables: {

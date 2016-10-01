@@ -20,6 +20,11 @@
 				<input type="password" class="password-input form-control" name="password" value="" />
 			</div>
 		</form>
+		<form>
+			<div class="form-group">
+				<input type="password" class="password-input-image form-control" name="password" value="" />
+			</div>
+		</form>
 	</div>
 	<script src="js/jquery.js"></script>
 	<script src="js/password_strength.js"></script>
@@ -27,6 +32,11 @@
 	<script>
 		jQuery(function($) {
 			$(".password-input").strength();
+			$(".password-input-image").strength({
+				templates: {
+    			toggle: '<span class="input-group-addon"><img class="{toggleClass}" title="Show/Hide Password" src="images/checkbox.png" /></span>'
+    		}
+			});
 		});
 	</script>
 </body>

@@ -12,14 +12,15 @@ class Strength {
     this.element = element;
     this.$element = $(element);
 
-    this.options = $.extend({}, DEFAULTS, options, this.$element.data());
-
+    this.options = $.extend(true, {}, DEFAULTS, options, this.$element.data());
     this.classes = this.options.classes;
 
     this.$username = $(this.options.usernameField);
 
     this.score = 0;
     this.status = null;
+
+    this.shown = false;
 
     this.trigger('init');
     this.init();
@@ -43,9 +44,16 @@ class Strength {
   }
 
   bindEvents() {
-    this.$toggle.on('change', () => {
-      this.toggle();
-    });
+    if(this.$toggle.is(':checkbox')){
+      this.$toggle.on('change', () => {
+        this.toggle();
+      });
+    } else {
+      this.$toggle.on('click', () => {
+        this.toggle();
+      });
+    }
+
 
     this.$input.bind('keyup.strength keydown.strength', () => {
       this.check();
@@ -164,8 +172,21 @@ class Strength {
   }
 
   toggle() {
-    const type = this.$toggle.is(":checked") ? "text" : "password";
+    let type;
 
+    if(this.$toggle.is(':checkbox')) {
+      type = this.$toggle.is(":checked")? "text" : "password";
+    } else {
+      type = this.shown === false?"text" : "password";
+    }
+
+    this.shown = type === "text"?true: false;
+
+    if(this.shown) {
+      this.$container.addClass(this.classes.shown);
+    } else {
+      this.$container.removeClass(this.classes.shown);
+    }
     this.$input.attr('type', type);
 
     this.trigger('toggle', type);
