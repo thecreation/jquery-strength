@@ -1,6 +1,6 @@
 {
   "name": "jquery-strength",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A jquery plugin that do amazing things.",
   "main": "dist/jquery-strength.js",
   "copyright": "amazingSurge",

@@ -180,7 +180,7 @@ class Strength {
       type = this.shown === false?"text" : "password";
     }
 
-    this.shown = type === "text"?true: false;
+    this.shown = type === "text";
 
     if(this.shown) {
       this.$container.addClass(this.classes.shown);
@@ -202,7 +202,7 @@ class Strength {
     eventType = eventType.replace(/\b\w+\b/g, word => word.substring(0, 1).toUpperCase() + word.substring(1));
     const onFunction = `on${eventType}`;
     if (typeof this.options[onFunction] === 'function') {
-      this.options[onFunction](args);
+      this.options[onFunction].call(this, ...args);
     }
   }
 

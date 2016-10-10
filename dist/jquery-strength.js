@@ -1,5 +1,5 @@
 /**
-* jQuery strength v0.2.2
+* jQuery strength v0.2.3
 * https://github.com/amazingSurge/jquery-strength
 *
 * Copyright (c) amazingSurge
@@ -40,7 +40,7 @@
       :
 
       function(obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
       };
 
     function _classCallCheck(instance, Constructor) {
@@ -129,7 +129,7 @@
 
     var Strength = function() {
       function Strength(element) {
-        var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+        var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
         _classCallCheck(this, Strength);
 
@@ -339,7 +339,7 @@
             type = this.shown === false ? "text" : "password";
           }
 
-          this.shown = type === "text" ? true : false;
+          this.shown = type === "text";
 
           if (this.shown) {
             this.$container.addClass(this.classes.shown);
@@ -372,7 +372,9 @@
           var onFunction = 'on' + eventType;
 
           if (typeof this.options[onFunction] === 'function') {
-            this.options[onFunction](args);
+            var _options$onFunction;
+
+            (_options$onFunction = this.options[onFunction]).call.apply(_options$onFunction, [this].concat(args));
           }
         }
       }, {
@@ -392,7 +394,7 @@
     }();
 
     var info = {
-      version: '0.2.2'
+      version: '0.2.3'
     };
 
     var NAMESPACE = 'strength';
