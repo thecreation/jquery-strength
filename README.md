@@ -48,6 +48,11 @@ bower install jquery-strength --save
 npm install jquery-strength --save
 ```
 
+#### Install From Yarn
+```sh
+yarn add jquery-strength
+```
+
 #### Build From Source
 If you want build from source:
 
@@ -150,11 +155,11 @@ You can also save the instances to variable for further use.
 
 ```javascript
 // call directly
-$().strength('destory');
+$().strength('destroy');
 
 // or
 var api = $().data('strength');
-api.destory();
+api.destroy();
 ```
 
 #### getScore()

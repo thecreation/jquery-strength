@@ -1,5 +1,5 @@
 /**
-* jQuery strength v0.2.3
+* jQuery strength v0.2.4
 * https://github.com/amazingSurge/jquery-strength
 *
 * Copyright (c) amazingSurge
@@ -40,7 +40,7 @@
       :
 
       function(obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
       };
 
     function _classCallCheck(instance, Constructor) {
@@ -129,7 +129,7 @@
 
     var Strength = function() {
       function Strength(element) {
-        var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+        var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
         _classCallCheck(this, Strength);
 
@@ -196,7 +196,7 @@
             }
           );
 
-          this.$element.on('strength::check',
+          this.$element.on(NAMESPACE$1 + '::check',
 
             function(e, api, score, status) {
               _this.$score.html(_this.options.scoreLables[status]);
@@ -214,7 +214,7 @@
             }
           );
 
-          this.$element.on('strength::statusChange',
+          this.$element.on(NAMESPACE$1 + '::statusChange',
 
             function(e, api, current, old) {
               _this.$container.removeClass(_this.getStatusClass(old)).addClass(_this.getStatusClass(current));
@@ -353,11 +353,11 @@
       }, {
         key: 'trigger',
         value: function trigger(eventType) {
-          for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-            args[_key - 1] = arguments[_key];
+          for (var _len = arguments.length, params = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+            params[_key - 1] = arguments[_key];
           }
 
-          var data = [this].concat(args);
+          var data = [this].concat(params);
 
           // event
           this.$element.trigger(NAMESPACE$1 + '::' + eventType, data);
@@ -372,16 +372,14 @@
           var onFunction = 'on' + eventType;
 
           if (typeof this.options[onFunction] === 'function') {
-            var _options$onFunction;
-
-            (_options$onFunction = this.options[onFunction]).call.apply(_options$onFunction, [this].concat(args));
+            this.options[onFunction].apply(this, params);
           }
         }
       }, {
-        key: 'destory',
-        value: function destory() {
+        key: 'destroy',
+        value: function destroy() {
           this.$element.data(NAMESPACE$1, null);
-          this.trigger('destory');
+          this.trigger('destroy');
         }
       }], [{
         key: 'setDefaults',
@@ -394,7 +392,7 @@
     }();
 
     var info = {
-      version: '0.2.3'
+      version: '0.2.4'
     };
 
     var NAMESPACE = 'strength';

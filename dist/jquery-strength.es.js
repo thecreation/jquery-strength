@@ -1,5 +1,5 @@
 /**
-* jQuery strength v0.2.3
+* jQuery strength v0.2.4
 * https://github.com/amazingSurge/jquery-strength
 *
 * Copyright (c) amazingSurge
@@ -113,7 +113,7 @@ class Strength {
       this.check();
     });
 
-    this.$element.on('strength::check', (e, api, score, status) => {
+    this.$element.on(`${NAMESPACE$1}::check`, (e, api, score, status) => {
       this.$score.html(this.options.scoreLables[status]);
 
       if (status !== this.status) {
@@ -128,7 +128,7 @@ class Strength {
       this.score = score;
     });
 
-    this.$element.on('strength::statusChange', (e, api, current, old) => {
+    this.$element.on(`${NAMESPACE$1}::statusChange`, (e, api, current, old) => {
       this.$container.removeClass(this.getStatusClass(old)).addClass(this.getStatusClass(current));
     });
   }
@@ -246,23 +246,26 @@ class Strength {
     this.trigger('toggle', type);
   }
 
-  trigger(eventType, ...args) {
-    const data = [this].concat(args);
+  trigger(eventType, ...params) {
+    let data = [this].concat(params);
 
     // event
     this.$element.trigger(`${NAMESPACE$1}::${eventType}`, data);
 
     // callback
-    eventType = eventType.replace(/\b\w+\b/g, word => word.substring(0, 1).toUpperCase() + word.substring(1));
-    const onFunction = `on${eventType}`;
+    eventType = eventType.replace(/\b\w+\b/g, (word) => {
+      return word.substring(0, 1).toUpperCase() + word.substring(1);
+    });
+    let onFunction = `on${eventType}`;
+
     if (typeof this.options[onFunction] === 'function') {
-      this.options[onFunction].call(this, ...args);
+      this.options[onFunction].apply(this, params);
     }
   }
 
-  destory() {
+  destroy() {
     this.$element.data(NAMESPACE$1, null);
-    this.trigger('destory');
+    this.trigger('destroy');
   }
 
   static setDefaults(options) {
@@ -271,7 +274,7 @@ class Strength {
 }
 
 var info = {
-  version:'0.2.3'
+  version:'0.2.4'
 };
 
 const NAMESPACE = 'strength';
