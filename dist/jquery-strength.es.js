@@ -1,5 +1,5 @@
 /**
-* jQuery strength v0.2.4
+* jQuery strength v0.2.5
 * https://github.com/amazingSurge/jquery-strength
 *
 * Copyright (c) amazingSurge
@@ -274,7 +274,7 @@ class Strength {
 }
 
 var info = {
-  version:'0.2.4'
+  version:'0.2.5'
 };
 
 const NAMESPACE = 'strength';
